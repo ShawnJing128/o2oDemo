@@ -1,0 +1,1 @@
+2019-04-04 20:29:10.989 [main] DEBUG com.imooc.o2o.dao.ShopDao.insertShop - ==>  Preparing: INSERT INTO tb_shop(owner_id,area_id,shop_category_id,shop_name,shop_desc,shop_addr,phone,shop_img,priority,create_time, last_edit_time,enable_status,advice) VALUES (?,?,?,?,?,?,?,?,?,?,?,?) 
