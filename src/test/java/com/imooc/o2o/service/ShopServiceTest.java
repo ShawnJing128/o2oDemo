@@ -1,11 +1,15 @@
 package com.imooc.o2o.service;
 
+import static org.junit.Assert.assertEquals;
+
+import java.io.File;
 import java.util.Date;
 
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.imooc.o2o.BaseTest;
+import com.imooc.o2o.dto.ShopExecution;
 import com.imooc.o2o.entity.Area;
 import com.imooc.o2o.entity.PersonInfo;
 import com.imooc.o2o.entity.Shop;
@@ -34,6 +38,8 @@ public class ShopServiceTest extends BaseTest{
 		shop.setCreateTime(new Date());
 		shop.setEnableStatus(ShopStateEnum.CHECK.getState());//初始值为0
 		shop.setAdvice("审核中");
-		File
+		File shopImg = new File("/Users/shawn/Document/实战练习/image/xiaohuangren.jpg");
+		ShopExecution se = shopService.addShop(shop, shopImg);
+		assertEquals(ShopStateEnum.CHECK.getState(), se.getState());
 	}
 }
