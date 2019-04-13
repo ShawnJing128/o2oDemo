@@ -19,6 +19,12 @@ import com.imooc.o2o.util.ImageUtil;
 import com.imooc.o2o.util.PathUtil;
 @Service
 public class ShopServiceImpl implements ShopService{
+	/**
+	 * 流程:
+	 * 添加店铺-添加图片-将图片相对地址存入数据库
+	 * 
+	 * 这三步任何一步失败都会回滚-用Runtime Exception
+	 */
 	@Autowired
 	private ShopDao shopDao;
 	@Override
@@ -28,13 +34,13 @@ public class ShopServiceImpl implements ShopService{
 		if (shop == null) {
 			return new ShopExecution(ShopStateEnum.NULL_SHOP);
 		}
-		//try {
+		try {
 			//给店铺信息赋初始值
 			shop.setEnableStatus(0);
 			shop.setCreateTime(new Date());
 			shop.setLastEditTime(new Date());
 			int effectedNum = shopDao.insertShop(shop);
-			//如果影响行数<=0，则添加失败
+			//添加后，如果影响行数<=0，则添加失败
 			if(effectedNum<=0) {
 				//抛出异常，终止事务执行
 				//这里是RuntimeException而不是Exception的原因：只有RuntimeException 事务才能终止
@@ -43,14 +49,14 @@ public class ShopServiceImpl implements ShopService{
 				//添加成功后，先判断传入的图片是不是为空 
 				if(shopImg != null) {
 					//存储图片
-//					try {
-//						addShopImg(shop,shopImg);
-//					}catch (Exception e) {
-//						
-//						throw new ShopOperationException("addShopImg error"+e.getMessage());
-//						
-//					}
-					addShopImg(shop,shopImg);
+					try {
+						addShopImg(shop,shopImg);
+					}catch (Exception e) {
+						
+						throw new ShopOperationException("addShopImg error"+e.getMessage());
+						
+					}
+					
 					//更新店铺的图片地址
 					effectedNum = shopDao.updateShop(shop);
 					if (effectedNum <= 0) {
@@ -58,9 +64,9 @@ public class ShopServiceImpl implements ShopService{
 					}
 				}
 			}
-//		}catch(Exception e){
-//			throw new ShopOperationException("addShop error"+e.getMessage());
-//		}
+		}catch(Exception e){
+			throw new ShopOperationException("addShop error"+e.getMessage());
+		}
 		//返回状态值-CHECK(待审核)
 		return new ShopExecution(ShopStateEnum.CHECK, shop);
 	}
