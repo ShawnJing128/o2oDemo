@@ -33,6 +33,7 @@ public class ShopExecution {
 	public ShopExecution(ShopStateEnum stateEnum,Shop shop) {
 		this.state = stateEnum.getState();
 		this.stateInfo = stateEnum.getStateInfo();
+		this.shop = shop;
 	}
 	//在店铺操作在成功时使用的构造器-返回一个店铺对象列表
 	public ShopExecution(ShopStateEnum stateEnum,List<Shop> shopList) {

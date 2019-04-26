@@ -29,7 +29,7 @@ public class HttpServletRequestUtil {
 	public static Double getDouble(HttpServletRequest request,String key) {
 		try {
 			//从request中提取key，转成double型
-			return Double.valueOf(request.getParameter(key));
+			return Double.valueOf(request.getParameter(key));//转成Double类型
 		} catch(Exception e) {
 			return -1d;
 		}

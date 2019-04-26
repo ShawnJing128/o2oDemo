@@ -22,7 +22,15 @@
 		<property name="prefix" value="/WEB-INF/html/"></property>
 		<property name="suffix" value=".html"></property>
 	</bean>
-
+	<!-- 文件上传解析器 -->
+	<bean id="multipartResolver"
+		class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+		<property name="defaultEncoding" value="utf-8"></property>
+		<!-- 默认单位是字节，这里设置20M，1024*1024*20 -->
+		<property name="maxUploadSize" value="20971520"></property>
+		<!-- 最大内存 -->
+		<property name="maxInMemorySize" value="20971520"></property>
+	</bean>
 	<!-- 4.扫描web相关的bean -->
 	<context:component-scan base-package="com.imooc.o2o.web" />
 </beans>

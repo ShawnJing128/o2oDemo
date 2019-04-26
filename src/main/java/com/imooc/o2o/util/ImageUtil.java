@@ -2,6 +2,7 @@ package com.imooc.o2o.util;
 
 import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Random;
@@ -48,10 +49,10 @@ public class ImageUtil {
 	 * @param targetAddr
 	 * @return
 	 */
-	public static String generateThumbnail(File thumbnail,String targetAddr) {
+	public static String generateThumbnail(InputStream thumbnailInputStream,String fileName,String targetAddr) {
 		//由于用户上传的图片可能重名，因此要用系统随机生成的不重名的文件名
 		String realFileName = getRandomFileName();//随机名
-		String extension = getFileExtension(thumbnail);//扩展名
+		String extension = getFileExtension(fileName);//扩展名
 		makeDirPath(targetAddr);//目标目录可能不存在，要可以自动创建目录
 		String relativeAddr = targetAddr + realFileName + extension;//targetAddr是相对路径
 		logger.debug("current relativeAddr is: " + relativeAddr);
@@ -60,7 +61,7 @@ public class ImageUtil {
 		try {
 			//缩略图 加水印
 			System.out.println("basepath:---"+basePath);
-			Thumbnails.of(thumbnail).size(200, 200).watermark(Positions.BOTTOM_RIGHT,ImageIO.read(new File(basePath + "/watermark.jpg")),0.25f)
+			Thumbnails.of(thumbnailInputStream).size(200, 200).watermark(Positions.BOTTOM_RIGHT,ImageIO.read(new File(basePath + "/watermark.jpg")),0.25f)
 			.outputQuality(0.8f).toFile(dest);
 		} catch(IOException e) {
 			logger.error(e.toString());
@@ -90,10 +91,9 @@ public class ImageUtil {
 	 * @param thumbnail
 	 * @return
 	 */
-	private static String getFileExtension(File cFile) {
+	private static String getFileExtension(String fileName) {
 		//获取最后的点号后的字符
-		String orginalFileName = cFile.getName();
-		return orginalFileName.substring(orginalFileName.lastIndexOf("."));
+		return fileName.substring(fileName.lastIndexOf("."));
 	}
 	/**
 	 * 生成随机文件名，当前年月日小时分钟秒+五位随机数
@@ -111,5 +111,23 @@ public class ImageUtil {
 		Thumbnails.of(new File("/Users/shawn/Document/实战练习/image/xiaohuangren.jpg"))
 		.size(200,200).watermark(Positions.BOTTOM_RIGHT,ImageIO.read(new File(basePath + "/watermark.jpg")),0.25f)
 		.outputQuality(0.8f).toFile("/Users/shawn/Document/实战练习/image/xiaohuangrennew.jpg");
+	}
+	/**
+	 * storePath是文件路径还是目录路径
+	 * 如果是文件路径，则删除该文件
+	 * 如果是目录路径，则删除该目录下的所有文件
+	 * @param storePath
+	 */
+	public static void deleteFileOrPath(String storePath) {
+		File fileOrPath = new File(PathUtil.getImgBasePath() + storePath);//全路径
+		if(fileOrPath.exists()) {
+			if(fileOrPath.isDirectory()) {
+				File files[] = fileOrPath.listFiles();
+				for(int i = 0; i < files.length; i++) {
+					files[i].delete();
+				}
+			}
+			fileOrPath.delete();
+		}
 	}
 }
