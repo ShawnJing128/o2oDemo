@@ -40,7 +40,8 @@ $(function(){
 	}
 	function goShop(status,id) {
 		if(status == 1){
-			return '<a href="/o2oDemo/shop/shopmanage?shopId='+id+'"</a>';
+			return '<a href="/o2oDemo/shopadmin/shopmanagement?shopId=' + id
+			+ '">进入</a>';
 		} else {
 			return '';
 		}

@@ -1,24 +1,20 @@
-2019-04-26 11:04:24.673 [main] DEBUG com.imooc.o2o.dao.ShopDao.queryShopList - ==>  Preparing: SELECT s.shop_id, s.shop_name, s.shop_desc, s.shop_addr, s.phone, s.shop_img, s.priority, s.create_time, s.last_edit_time, s.enable_status, s.advice, a.area_id, a.area_name, sc.shop_category_id, sc.shop_category_name FROM tb_shop s, tb_area a, tb_shop_category sc WHERE s.shop_category_id = ? AND s.area_id=a.area_id AND s.shop_category_id = sc.shop_category_id ORDER BY s.priority DESC LIMIT ?,?; 
-2019-04-26 11:04:24.707 [main] DEBUG com.imooc.o2o.dao.ShopDao.queryShopList - ==> Parameters: 1(Long), 0(Integer), 2(Integer)
-2019-04-26 11:04:24.730 [main] DEBUG com.imooc.o2o.dao.ShopDao.queryShopList - <==      Total: 2
-2019-04-26 11:04:24.737 [main] DEBUG com.imooc.o2o.dao.ShopDao.queryShopCount - ==>  Preparing: SELECT count(*) FROM tb_shop s, tb_area a, tb_shop_category sc WHERE s.shop_category_id = ? AND s.area_id=a.area_id AND s.shop_category_id = sc.shop_category_id 
-2019-04-26 11:04:24.737 [main] DEBUG com.imooc.o2o.dao.ShopDao.queryShopCount - ==> Parameters: 1(Long)
-2019-04-26 11:04:24.739 [main] DEBUG com.imooc.o2o.dao.ShopDao.queryShopCount - <==      Total: 1
-2019-04-26 11:04:53.011 [main] DEBUG com.imooc.o2o.dao.ShopDao.queryShopList - ==>  Preparing: SELECT s.shop_id, s.shop_name, s.shop_desc, s.shop_addr, s.phone, s.shop_img, s.priority, s.create_time, s.last_edit_time, s.enable_status, s.advice, a.area_id, a.area_name, sc.shop_category_id, sc.shop_category_name FROM tb_shop s, tb_area a, tb_shop_category sc WHERE s.shop_category_id = ? AND s.area_id=a.area_id AND s.shop_category_id = sc.shop_category_id ORDER BY s.priority DESC LIMIT ?,?; 
-2019-04-26 11:04:53.055 [main] DEBUG com.imooc.o2o.dao.ShopDao.queryShopList - ==> Parameters: 1(Long), 2(Integer), 2(Integer)
-2019-04-26 11:04:53.087 [main] DEBUG com.imooc.o2o.dao.ShopDao.queryShopList - <==      Total: 2
-2019-04-26 11:04:53.094 [main] DEBUG com.imooc.o2o.dao.ShopDao.queryShopCount - ==>  Preparing: SELECT count(*) FROM tb_shop s, tb_area a, tb_shop_category sc WHERE s.shop_category_id = ? AND s.area_id=a.area_id AND s.shop_category_id = sc.shop_category_id 
-2019-04-26 11:04:53.095 [main] DEBUG com.imooc.o2o.dao.ShopDao.queryShopCount - ==> Parameters: 1(Long)
-2019-04-26 11:04:53.096 [main] DEBUG com.imooc.o2o.dao.ShopDao.queryShopCount - <==      Total: 1
-2019-04-26 11:05:02.668 [main] DEBUG com.imooc.o2o.dao.ShopDao.queryShopList - ==>  Preparing: SELECT s.shop_id, s.shop_name, s.shop_desc, s.shop_addr, s.phone, s.shop_img, s.priority, s.create_time, s.last_edit_time, s.enable_status, s.advice, a.area_id, a.area_name, sc.shop_category_id, sc.shop_category_name FROM tb_shop s, tb_area a, tb_shop_category sc WHERE s.shop_category_id = ? AND s.area_id=a.area_id AND s.shop_category_id = sc.shop_category_id ORDER BY s.priority DESC LIMIT ?,?; 
-2019-04-26 11:05:02.706 [main] DEBUG com.imooc.o2o.dao.ShopDao.queryShopList - ==> Parameters: 1(Long), 4(Integer), 2(Integer)
-2019-04-26 11:05:02.730 [main] DEBUG com.imooc.o2o.dao.ShopDao.queryShopList - <==      Total: 0
-2019-04-26 11:05:02.741 [main] DEBUG com.imooc.o2o.dao.ShopDao.queryShopCount - ==>  Preparing: SELECT count(*) FROM tb_shop s, tb_area a, tb_shop_category sc WHERE s.shop_category_id = ? AND s.area_id=a.area_id AND s.shop_category_id = sc.shop_category_id 
-2019-04-26 11:05:02.741 [main] DEBUG com.imooc.o2o.dao.ShopDao.queryShopCount - ==> Parameters: 1(Long)
-2019-04-26 11:05:02.744 [main] DEBUG com.imooc.o2o.dao.ShopDao.queryShopCount - <==      Total: 1
-2019-04-26 11:05:38.438 [main] DEBUG com.imooc.o2o.dao.ShopDao.queryShopList - ==>  Preparing: SELECT s.shop_id, s.shop_name, s.shop_desc, s.shop_addr, s.phone, s.shop_img, s.priority, s.create_time, s.last_edit_time, s.enable_status, s.advice, a.area_id, a.area_name, sc.shop_category_id, sc.shop_category_name FROM tb_shop s, tb_area a, tb_shop_category sc WHERE s.shop_category_id = ? AND s.area_id=a.area_id AND s.shop_category_id = sc.shop_category_id ORDER BY s.priority DESC LIMIT ?,?; 
-2019-04-26 11:05:38.472 [main] DEBUG com.imooc.o2o.dao.ShopDao.queryShopList - ==> Parameters: 1(Long), 0(Integer), 2(Integer)
-2019-04-26 11:05:38.496 [main] DEBUG com.imooc.o2o.dao.ShopDao.queryShopList - <==      Total: 2
-2019-04-26 11:05:38.506 [main] DEBUG com.imooc.o2o.dao.ShopDao.queryShopCount - ==>  Preparing: SELECT count(*) FROM tb_shop s, tb_area a, tb_shop_category sc WHERE s.shop_category_id = ? AND s.area_id=a.area_id AND s.shop_category_id = sc.shop_category_id 
-2019-04-26 11:05:38.507 [main] DEBUG com.imooc.o2o.dao.ShopDao.queryShopCount - ==> Parameters: 1(Long)
-2019-04-26 11:05:38.508 [main] DEBUG com.imooc.o2o.dao.ShopDao.queryShopCount - <==      Total: 1
+2019-04-27 12:23:22.241 [main] DEBUG c.i.o.d.P.queryProductCategoryList - ==>  Preparing: SELECT product_category_id, product_category_name, priority, create_time, shop_id, FROM tb_product_category WHERE shop_id=? 
+2019-04-27 12:23:22.351 [main] DEBUG c.i.o.d.P.queryProductCategoryList - ==> Parameters: 1(Long)
+2019-04-27 12:26:18.902 [main] DEBUG c.i.o.d.P.queryProductCategoryList - ==>  Preparing: SELECT product_category_id, product_category_name, priority, create_time, shop_id, FROM tb_product_category WHERE shop_id=? 
+2019-04-27 12:26:18.940 [main] DEBUG c.i.o.d.P.queryProductCategoryList - ==> Parameters: 1(Long)
+2019-04-27 12:27:12.841 [main] DEBUG c.i.o.d.P.queryProductCategoryList - ==>  Preparing: SELECT product_category_id, product_category_name, priority, create_time, shop_id, FROM tb_product_category WHERE shop_id=? 
+2019-04-27 12:27:12.871 [main] DEBUG c.i.o.d.P.queryProductCategoryList - ==> Parameters: 1(Long)
+2019-04-27 12:28:44.776 [main] DEBUG c.i.o.d.P.queryProductCategoryList - ==>  Preparing: SELECT product_category_id, product_category_name, priority, create_time, shop_id FROM tb_product_category WHERE shop_id=? 
+2019-04-27 12:28:44.804 [main] DEBUG c.i.o.d.P.queryProductCategoryList - ==> Parameters: 1(Long)
+2019-04-27 12:28:44.825 [main] DEBUG c.i.o.d.P.queryProductCategoryList - <==      Total: 3
+2019-04-27 21:09:54.203 [main] DEBUG c.i.o.d.P.batchInsertProductCategory - ==>  Preparing: INSERT INTO tb_product_category(tb_product_category_name,create_time,shop_id) VALUES ?, ?, ?, ? , ?, ?, ?, ? 
+2019-04-27 21:09:54.244 [main] DEBUG c.i.o.d.P.batchInsertProductCategory - ==> Parameters: 商品类别1(String), 1(Integer), 2019-04-27 21:09:53.681(Timestamp), 1(Long), 商品类别2(String), 2(Integer), 2019-04-27 21:09:53.681(Timestamp), 1(Long)
+2019-04-27 21:11:26.311 [main] DEBUG c.i.o.d.P.batchInsertProductCategory - ==>  Preparing: INSERT INTO tb_product_category(tb_product_category_name,create_time,shop_id) VALUES ( ?, ?, ?, ? ) , ( ?, ?, ?, ? ) 
+2019-04-27 21:11:26.353 [main] DEBUG c.i.o.d.P.batchInsertProductCategory - ==> Parameters: 商品类别1(String), 1(Integer), 2019-04-27 21:11:25.81(Timestamp), 1(Long), 商品类别2(String), 2(Integer), 2019-04-27 21:11:25.81(Timestamp), 1(Long)
+2019-04-27 21:12:35.604 [main] DEBUG c.i.o.d.P.batchInsertProductCategory - ==>  Preparing: INSERT INTO tb_product_category(tb_product_category_name,priority，create_time,shop_id) VALUES ( ?, ?, ?, ? ) , ( ?, ?, ?, ? ) 
+2019-04-27 21:12:35.636 [main] DEBUG c.i.o.d.P.batchInsertProductCategory - ==> Parameters: 商品类别1(String), 1(Integer), 2019-04-27 21:12:35.065(Timestamp), 1(Long), 商品类别2(String), 2(Integer), 2019-04-27 21:12:35.065(Timestamp), 1(Long)
+2019-04-27 21:13:09.776 [main] DEBUG c.i.o.d.P.batchInsertProductCategory - ==>  Preparing: INSERT INTO tb_product_category(product_category_name,priority，create_time,shop_id) VALUES ( ?, ?, ?, ? ) , ( ?, ?, ?, ? ) 
+2019-04-27 21:13:09.817 [main] DEBUG c.i.o.d.P.batchInsertProductCategory - ==> Parameters: 商品类别1(String), 1(Integer), 2019-04-27 21:13:09.254(Timestamp), 1(Long), 商品类别2(String), 2(Integer), 2019-04-27 21:13:09.254(Timestamp), 1(Long)
+2019-04-27 21:13:59.850 [main] DEBUG c.i.o.d.P.batchInsertProductCategory - ==>  Preparing: INSERT INTO tb_product_category(product_category_name,priority,create_time,shop_id) VALUES ( ?, ?, ?, ? ) , ( ?, ?, ?, ? ) 
+2019-04-27 21:13:59.899 [main] DEBUG c.i.o.d.P.batchInsertProductCategory - ==> Parameters: 商品类别1(String), 1(Integer), 2019-04-27 21:13:59.337(Timestamp), 1(Long), 商品类别2(String), 2(Integer), 2019-04-27 21:13:59.337(Timestamp), 1(Long)
+2019-04-27 21:13:59.909 [main] DEBUG c.i.o.d.P.batchInsertProductCategory - <==    Updates: 2

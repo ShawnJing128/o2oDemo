@@ -9,7 +9,7 @@ import java.util.Date;
  */
 public class ProductCategory {
 	private Long productCategoryId;
-	private Long shopId;
+	private Long shopId;//没有用shop实体类原因：我们获取ProductCategory时不需要获取shop类中除shopId外的其他信息
 	private String productCategoryName;
 	private Integer priority;
 	private Date createTime;
