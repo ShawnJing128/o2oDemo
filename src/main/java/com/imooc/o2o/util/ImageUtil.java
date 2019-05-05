@@ -13,6 +13,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.multipart.commons.CommonsMultipartFile;
 
+import com.imooc.o2o.dto.ImageHolder;
+
 import net.coobird.thumbnailator.Thumbnails;
 import net.coobird.thumbnailator.geometry.Positions;
 
@@ -49,10 +51,10 @@ public class ImageUtil {
 	 * @param targetAddr
 	 * @return
 	 */
-	public static String generateThumbnail(InputStream thumbnailInputStream,String fileName,String targetAddr) {
+	public static String generateThumbnail(ImageHolder thumbnail,String targetAddr) {
 		//由于用户上传的图片可能重名，因此要用系统随机生成的不重名的文件名
 		String realFileName = getRandomFileName();//随机名
-		String extension = getFileExtension(fileName);//扩展名
+		String extension = getFileExtension(thumbnail.getImageName());//扩展名
 		makeDirPath(targetAddr);//目标目录可能不存在，要可以自动创建目录
 		String relativeAddr = targetAddr + realFileName + extension;//targetAddr是相对路径
 		logger.debug("current relativeAddr is: " + relativeAddr);
@@ -61,7 +63,7 @@ public class ImageUtil {
 		try {
 			//缩略图 加水印
 			System.out.println("basepath:---"+basePath);
-			Thumbnails.of(thumbnailInputStream).size(200, 200).watermark(Positions.BOTTOM_RIGHT,ImageIO.read(new File(basePath + "/watermark.jpg")),0.25f)
+			Thumbnails.of(thumbnail.getImage()).size(200, 200).watermark(Positions.BOTTOM_RIGHT,ImageIO.read(new File(basePath + "/watermark.jpg")),0.25f)
 			.outputQuality(0.8f).toFile(dest);
 		} catch(IOException e) {
 			logger.error(e.toString());
@@ -74,6 +76,39 @@ public class ImageUtil {
 		 */
 		return relativeAddr;
 	}
+	/**
+	 * 处理详情图，并返回新生成图片的相对值路径
+	 * @param thumbnail
+	 * @param targetAddr
+	 * @return
+	 */
+	
+	public static String generateNormalImg(ImageHolder thumbnail,String targetAddr) {
+		//由于用户上传的图片可能重名，因此要用系统随机生成的不重名的文件名
+		String realFileName = getRandomFileName();//随机名
+		String extension = getFileExtension(thumbnail.getImageName());//扩展名
+		makeDirPath(targetAddr);//目标目录可能不存在，要可以自动创建目录
+		String relativeAddr = targetAddr + realFileName + extension;//targetAddr是相对路径
+		logger.debug("current relativeAddr is: " + relativeAddr);
+		File dest = new File(PathUtil.getImgBasePath() + relativeAddr);//对路径进行拼接，形成全路径
+		logger.debug("current complete addr is: " + PathUtil.getImgBasePath() + relativeAddr);
+		try {
+			//缩略图 加水印
+			System.out.println("basepath:---"+basePath);
+			Thumbnails.of(thumbnail.getImage()).size(337, 640).watermark(Positions.BOTTOM_RIGHT,ImageIO.read(new File(basePath + "/watermark.jpg")),0.25f)
+			.outputQuality(0.9f).toFile(dest);
+		} catch(IOException e) {
+			logger.error(e.toString());
+			throw new RuntimeException("创建详情图失败:"+e.toString());
+		}
+		/**
+		 *  返回图片相对路径地址原因：
+		 *  1、数据库里有shop_img字段，存储处理图片后的地址 
+		 *  2、防止程序迁移系统后也能照常读取图片，读取的时候由PathUtil.getImgBasePath() + relativeAddr进行拼接
+		 */
+		return relativeAddr;
+	}
+	
 	/**
 	 * 创建目标路径上涉及到的目录
 	 * @param targetAddr

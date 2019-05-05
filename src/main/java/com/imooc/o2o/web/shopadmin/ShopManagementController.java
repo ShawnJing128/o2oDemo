@@ -1,10 +1,6 @@
 package com.imooc.o2o.web.shopadmin;
 
-import java.io.File;
-import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -14,7 +10,6 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -23,6 +18,7 @@ import org.springframework.web.multipart.commons.CommonsMultipartFile;
 import org.springframework.web.multipart.commons.CommonsMultipartResolver;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.imooc.o2o.dto.ImageHolder;
 import com.imooc.o2o.dto.ShopExecution;
 import com.imooc.o2o.entity.Area;
 import com.imooc.o2o.entity.PersonInfo;
@@ -35,8 +31,6 @@ import com.imooc.o2o.service.ShopCategoryService;
 import com.imooc.o2o.service.ShopService;
 import com.imooc.o2o.util.CodeUtil;
 import com.imooc.o2o.util.HttpServletRequestUtil;
-import com.imooc.o2o.util.ImageUtil;
-import com.imooc.o2o.util.PathUtil;
 @Controller
 @RequestMapping("/shopadmin")
 public class ShopManagementController {
@@ -164,9 +158,10 @@ public class ShopManagementController {
 			try {
 				if(shopImg == null) {
 					//图片为空，传入null，不修改图片
-					se = shopService.modifyShop(shop,null,null);
+					se = shopService.modifyShop(shop,null);
 				} else {
-					se = shopService.modifyShop(shop,shopImg.getInputStream(),shopImg.getOriginalFilename());
+					ImageHolder imageHolder = new ImageHolder(shopImg.getOriginalFilename(),shopImg.getInputStream());
+					se = shopService.modifyShop(shop,imageHolder);
 				}
 				
 				if(se.getState() == ShopStateEnum.SUCCESS.getState()) {
@@ -262,7 +257,8 @@ public class ShopManagementController {
 			shop.setOwner(owner);
 			ShopExecution se;
 			try {
-				se = shopService.addShop(shop,shopImg.getInputStream(),shopImg.getOriginalFilename());
+				ImageHolder imageHolder = new ImageHolder(shopImg.getOriginalFilename(),shopImg.getInputStream());
+				se = shopService.addShop(shop,imageHolder);
 				if(se.getState() == ShopStateEnum.CHECK.getState()) {
 					modelMap.put("success", true);
 					//该用户可以操作的店铺列表

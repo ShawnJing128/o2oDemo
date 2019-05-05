@@ -1,20 +1,12 @@
-2019-04-27 12:23:22.241 [main] DEBUG c.i.o.d.P.queryProductCategoryList - ==>  Preparing: SELECT product_category_id, product_category_name, priority, create_time, shop_id, FROM tb_product_category WHERE shop_id=? 
-2019-04-27 12:23:22.351 [main] DEBUG c.i.o.d.P.queryProductCategoryList - ==> Parameters: 1(Long)
-2019-04-27 12:26:18.902 [main] DEBUG c.i.o.d.P.queryProductCategoryList - ==>  Preparing: SELECT product_category_id, product_category_name, priority, create_time, shop_id, FROM tb_product_category WHERE shop_id=? 
-2019-04-27 12:26:18.940 [main] DEBUG c.i.o.d.P.queryProductCategoryList - ==> Parameters: 1(Long)
-2019-04-27 12:27:12.841 [main] DEBUG c.i.o.d.P.queryProductCategoryList - ==>  Preparing: SELECT product_category_id, product_category_name, priority, create_time, shop_id, FROM tb_product_category WHERE shop_id=? 
-2019-04-27 12:27:12.871 [main] DEBUG c.i.o.d.P.queryProductCategoryList - ==> Parameters: 1(Long)
-2019-04-27 12:28:44.776 [main] DEBUG c.i.o.d.P.queryProductCategoryList - ==>  Preparing: SELECT product_category_id, product_category_name, priority, create_time, shop_id FROM tb_product_category WHERE shop_id=? 
-2019-04-27 12:28:44.804 [main] DEBUG c.i.o.d.P.queryProductCategoryList - ==> Parameters: 1(Long)
-2019-04-27 12:28:44.825 [main] DEBUG c.i.o.d.P.queryProductCategoryList - <==      Total: 3
-2019-04-27 21:09:54.203 [main] DEBUG c.i.o.d.P.batchInsertProductCategory - ==>  Preparing: INSERT INTO tb_product_category(tb_product_category_name,create_time,shop_id) VALUES ?, ?, ?, ? , ?, ?, ?, ? 
-2019-04-27 21:09:54.244 [main] DEBUG c.i.o.d.P.batchInsertProductCategory - ==> Parameters: 商品类别1(String), 1(Integer), 2019-04-27 21:09:53.681(Timestamp), 1(Long), 商品类别2(String), 2(Integer), 2019-04-27 21:09:53.681(Timestamp), 1(Long)
-2019-04-27 21:11:26.311 [main] DEBUG c.i.o.d.P.batchInsertProductCategory - ==>  Preparing: INSERT INTO tb_product_category(tb_product_category_name,create_time,shop_id) VALUES ( ?, ?, ?, ? ) , ( ?, ?, ?, ? ) 
-2019-04-27 21:11:26.353 [main] DEBUG c.i.o.d.P.batchInsertProductCategory - ==> Parameters: 商品类别1(String), 1(Integer), 2019-04-27 21:11:25.81(Timestamp), 1(Long), 商品类别2(String), 2(Integer), 2019-04-27 21:11:25.81(Timestamp), 1(Long)
-2019-04-27 21:12:35.604 [main] DEBUG c.i.o.d.P.batchInsertProductCategory - ==>  Preparing: INSERT INTO tb_product_category(tb_product_category_name,priority，create_time,shop_id) VALUES ( ?, ?, ?, ? ) , ( ?, ?, ?, ? ) 
-2019-04-27 21:12:35.636 [main] DEBUG c.i.o.d.P.batchInsertProductCategory - ==> Parameters: 商品类别1(String), 1(Integer), 2019-04-27 21:12:35.065(Timestamp), 1(Long), 商品类别2(String), 2(Integer), 2019-04-27 21:12:35.065(Timestamp), 1(Long)
-2019-04-27 21:13:09.776 [main] DEBUG c.i.o.d.P.batchInsertProductCategory - ==>  Preparing: INSERT INTO tb_product_category(product_category_name,priority，create_time,shop_id) VALUES ( ?, ?, ?, ? ) , ( ?, ?, ?, ? ) 
-2019-04-27 21:13:09.817 [main] DEBUG c.i.o.d.P.batchInsertProductCategory - ==> Parameters: 商品类别1(String), 1(Integer), 2019-04-27 21:13:09.254(Timestamp), 1(Long), 商品类别2(String), 2(Integer), 2019-04-27 21:13:09.254(Timestamp), 1(Long)
-2019-04-27 21:13:59.850 [main] DEBUG c.i.o.d.P.batchInsertProductCategory - ==>  Preparing: INSERT INTO tb_product_category(product_category_name,priority,create_time,shop_id) VALUES ( ?, ?, ?, ? ) , ( ?, ?, ?, ? ) 
-2019-04-27 21:13:59.899 [main] DEBUG c.i.o.d.P.batchInsertProductCategory - ==> Parameters: 商品类别1(String), 1(Integer), 2019-04-27 21:13:59.337(Timestamp), 1(Long), 商品类别2(String), 2(Integer), 2019-04-27 21:13:59.337(Timestamp), 1(Long)
-2019-04-27 21:13:59.909 [main] DEBUG c.i.o.d.P.batchInsertProductCategory - <==    Updates: 2
+2019-05-04 00:16:15.023 [main] DEBUG com.imooc.o2o.util.ImageUtil - current relativeAddr is: upload/item/shop/1/5126820190504001615.jpg
+2019-05-04 00:16:15.032 [main] DEBUG com.imooc.o2o.util.ImageUtil - current complete addr is: /Users/shawn/Document/实战练习/image/upload/item/shop/1/5126820190504001615.jpg
+2019-05-04 00:16:16.779 [main] DEBUG com.imooc.o2o.dao.ProductDao.insertProduct - ==>  Preparing: INSERT INTO tb_product(product_name,product_desc,img_addr, normal_price,promotion_price,priority,create_time, last_edit_time,enable_status,product_category_id, shop_id) VALUES (?,?,?, ?,?,?,?, ?,?,?, ?) 
+2019-05-04 00:16:16.918 [main] DEBUG com.imooc.o2o.dao.ProductDao.insertProduct - ==> Parameters: 测试商品11(String), 测试商品11(String), upload/item/shop/1/5126820190504001615.jpg(String), null, null, 20(Integer), 2019-05-04 00:16:15.016(Timestamp), 2019-05-04 00:16:15.016(Timestamp), 1(Integer), 1(Long), 1(Long)
+2019-05-04 00:16:16.925 [main] DEBUG com.imooc.o2o.dao.ProductDao.insertProduct - <==    Updates: 1
+2019-05-04 00:16:16.973 [main] DEBUG com.imooc.o2o.util.ImageUtil - current relativeAddr is: upload/item/shop/1/4532420190504001616.jpg
+2019-05-04 00:16:16.974 [main] DEBUG com.imooc.o2o.util.ImageUtil - current complete addr is: /Users/shawn/Document/实战练习/image/upload/item/shop/1/4532420190504001616.jpg
+2019-05-04 00:16:17.179 [main] DEBUG com.imooc.o2o.util.ImageUtil - current relativeAddr is: upload/item/shop/1/1679420190504001617.jpg
+2019-05-04 00:16:17.180 [main] DEBUG com.imooc.o2o.util.ImageUtil - current complete addr is: /Users/shawn/Document/实战练习/image/upload/item/shop/1/1679420190504001617.jpg
+2019-05-04 00:16:17.332 [main] DEBUG c.i.o2o.dao.ProductImgDao.batchInsertProductImg - ==>  Preparing: INSERT INTO tb_product_img(img_addr,img_desc,priority, create_time,product_id) VALUES ( ?, ?, ?, ?, ? ) , ( ?, ?, ?, ?, ? ) 
+2019-05-04 00:16:17.338 [main] DEBUG c.i.o2o.dao.ProductImgDao.batchInsertProductImg - ==> Parameters: upload/item/shop/1/4532420190504001616.jpg(String), null, null, 2019-05-04 00:16:17.179(Timestamp), 7(Long), upload/item/shop/1/1679420190504001617.jpg(String), null, null, 2019-05-04 00:16:17.283(Timestamp), 7(Long)
+2019-05-04 00:16:17.342 [main] DEBUG c.i.o2o.dao.ProductImgDao.batchInsertProductImg - <==    Updates: 2

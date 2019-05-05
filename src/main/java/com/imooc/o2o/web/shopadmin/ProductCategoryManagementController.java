@@ -18,6 +18,7 @@ import com.imooc.o2o.dto.Result;
 import com.imooc.o2o.entity.ProductCategory;
 import com.imooc.o2o.entity.Shop;
 import com.imooc.o2o.enums.ProductCategoryStateEnum;
+import com.imooc.o2o.exceptions.ProductCategoryOperationException;
 import com.imooc.o2o.service.ProductCategoryService;
 
 @Controller
@@ -68,6 +69,34 @@ public class ProductCategoryManagementController {
 		} else {
 			modelMap.put("success", false);
 			modelMap.put("errMsg", "请至少输入一个商品类别");
+		}
+		return modelMap;
+	}
+	@RequestMapping(value = "/removeproductcategory",method = RequestMethod.POST)
+	@ResponseBody
+	private Map<String,Object> removeProductCategory(Long productCategoryId,HttpServletRequest request){
+		Map<String,Object> modelMap = new HashMap<String,Object>();
+		if(productCategoryId != null && productCategoryId > 0) {
+			try {
+				/*getAttribute里的currentShop是ShopManagementController中
+				getshopmanagementinfo里setAttribute("currentShop", currentShop)。
+				*/
+				Shop currentShop = (Shop) request.getSession().getAttribute("currentShop");
+				ProductCategoryExecution pe = productCategoryService.deleteProductCategory(productCategoryId, currentShop.getShopId());
+				if(pe.getState() == ProductCategoryStateEnum.SUCCESS.getState()) {
+					modelMap.put("success", true);
+				} else {
+					modelMap.put("success", false);
+					modelMap.put("errMsg", pe.getStateInfo());
+				}
+			}catch (ProductCategoryOperationException e) {
+				modelMap.put("success", false);
+				modelMap.put("errMsg", e.toString());
+				return modelMap;
+			}
+		}else {
+			modelMap.put("success", false);
+			modelMap.put("errMsg", "请至少选择一个商品类别");
 		}
 		return modelMap;
 	}
