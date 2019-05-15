@@ -34,8 +34,8 @@ public class ProductServiceTest extends BaseTest{
 		pc.setProductCategoryId(1L);
 		product.setShop(shop);
 		product.setProductCategory(pc);
-		product.setProductName("测试商品11");
-		product.setProductDesc("测试商品11");
+		product.setProductName("测试商品33");
+		product.setProductDesc("测试商品33");
 		product.setPriority(20);
 		product.setCreateTime(new Date());
 		product.setEnableStatus(ProductStateEnum.SUCCESS.getState());

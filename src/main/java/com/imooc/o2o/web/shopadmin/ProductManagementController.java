@@ -65,8 +65,9 @@ public class ProductManagementController {
 					CommonsMultipartFile productImgFile = (CommonsMultipartFile) multipartRequest.getFile("productImg"+i);
 					if(productImgFile != null) {
 						//若取出的第i张详情图片文件流不为空，则将其加入详情图列表
-						ImageHolder productImg = new ImageHolder(productImgFile.getName(), 
+						ImageHolder productImg = new ImageHolder(productImgFile.getOriginalFilename(), 
 								productImgFile.getInputStream());
+						//System.out.println("controller name:" + productImg.getImageName());
 						productImgList.add(productImg);
 					}else {
 						//若取出的第i张详情图片文件流为空,则终止循环
@@ -96,9 +97,7 @@ public class ProductManagementController {
 			try {
 				//从session中获取当前店铺的Id并赋值给product，减少对前端数据的依赖
 				Shop currentShop = (Shop)request.getSession().getAttribute("currentShop");
-				Shop shop = new Shop();
-				shop.setShopId(currentShop.getShopId());
-				product.setShop(shop);
+				product.setShop(currentShop);
 				//执行添加操作
 				ProductExecution pe = productService.addProduct(product, thumbnail, productImgList);
 				if(pe.getState() == ProductStateEnum.SUCCESS.getState()) {
