@@ -18,7 +18,7 @@ $(function() {
 		getCategory();
 		productPostUrl = '/o2oDemo/shopadmin/addproduct';
 	}
-
+ 
 	// 获取需要编辑的商品的商品信息，并赋值给表单
 	function getInfo(id) {
 		$
@@ -56,7 +56,7 @@ $(function() {
 							}
 						});
 	}
-
+ 
 	// 为商品添加操作提供该店铺下的所有商品类别列表
 	function getCategory() {
 		$.getJSON(categoryUrl, function(data) {
@@ -72,7 +72,7 @@ $(function() {
 			}
 		});
 	}
-
+ 
 	// 针对商品详情图控件组，若该控件组的最后一个元素发生变化（即上传了图片），
 	// 且控件总数未达到6个，则生成新的一个文件上传控件
 	$('.detail-img-div').on('change', '.detail-img:last-child', function() {
@@ -80,7 +80,7 @@ $(function() {
 			$('#detail-img').append('<input type="file" class="detail-img">');
 		}
 	});
-
+ 
 	// 提交按钮的事件响应，分别对商品添加和编辑操作做不同响应
 	$('#submit').click(
 			function() {
@@ -100,7 +100,7 @@ $(function() {
 							}).data('value')
 				};
 				product.productId = productId;
-
+ 
 				// 获取缩略图文件流
 				var thumbnail = $('#small-img')[0].files[0];
 				// 生成表单对象，用于接收参数并传递给后台
@@ -144,5 +144,5 @@ $(function() {
 					}
 				});
 			});
-
+ 
 });
