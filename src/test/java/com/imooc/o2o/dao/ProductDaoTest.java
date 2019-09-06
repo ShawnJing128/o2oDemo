@@ -23,7 +23,7 @@ public class ProductDaoTest extends BaseTest {
 	@Autowired ProductDao productDao;
 	@Autowired ProductImgDao productImgDao;
 	@Test
-	// @Ignore
+	@Ignore
 	public void testAInsertProduct() throws Exception{
 		Shop shop1 = new Shop();
 		shop1.setShopId(1L);
@@ -132,5 +132,9 @@ public class ProductDaoTest extends BaseTest {
 		int effectedNum = productDao.updateProduct(product);
 		assertEquals(1, effectedNum);
 	}
-	
+	@Test
+	public void testEUpdateProductCategoryToNull() {
+		int effectedNum = productDao.updateProductCategoryToNull(3L);
+		assertEquals(1, effectedNum);
+	}
 }
