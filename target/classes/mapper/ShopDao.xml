@@ -2,7 +2,7 @@
 <!DOCTYPE mapper
     PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-    <mapper namespace="com.imooc.o2o.dao.ShopDao">
+<mapper namespace="com.imooc.o2o.dao.ShopDao">
 	<resultMap type="com.imooc.o2o.entity.Shop" id="shopMap">
 		<id column="shop_id" property="shopId" />
 		<result column="shop_name" property="shopName" />
@@ -20,10 +20,12 @@
 			<id column="area_id" property="areaId" />
 			<result column="area_name" property="areaName" />
 		</association>
-		<association property="shopCategory" column="shop_category_id"
+		<association property="shopCategory"
+			column="shop_category_id"
 			javaType="com.imooc.o2o.entity.ShopCategory">
 			<id column="shop_category_id" property="shopCategoryId" />
-			<result column="shop_category_name" property="shopCategoryName" />
+			<result column="shop_category_name"
+				property="shopCategoryName" />
 		</association>
 		<association property="owner" column="user_id"
 			javaType="com.imooc.o2o.entity.PersonInfo">
@@ -32,8 +34,8 @@
 		</association>
 	</resultMap>
 	<select id="queryShopList" resultMap="shopMap">
-	<!-- 这里不用parameterType是因为Dao接口有三个参数了 -->
-	SELECT
+		<!-- 这里不用parameterType是因为Dao接口有三个参数了 -->
+		SELECT
 		s.shop_id,
 		s.shop_name,
 		s.shop_desc,
@@ -54,11 +56,23 @@
 		tb_area a,
 		tb_shop_category sc
 		<where>
-			<if test="shopCondition.shopCategory!=null and 
+			<if
+				test="shopCondition.shopCategory!=null and 
 			shopCondition.shopCategory.shopCategoryId!=null">
-				and s.shop_category_id = #{shopCondition.shopCategory.shopCategoryId}
+				and s.shop_category_id =
+				#{shopCondition.shopCategory.shopCategoryId}
 			</if>
-			<if test="shopCondition.area!=null and 
+			<if
+				test="shopCondition.shopCategory!=null 
+			and shopCondition.shopCategory.parent!=null 
+			and shopCondition.shopCategory.parent.shopCategoryId!=null">
+				and s.shop_category_id in (select shop_category_id from
+				tb_shop_category
+				WHERE parent_id =
+				#{shopCondition.shopCategory.parent.shopCategoryId})
+			</if>
+			<if
+				test="shopCondition.area!=null and 
 			shopCondition.area.areaId!=null">
 				and s.area_id = #{shopCondition.area.areaId}
 			</if>
@@ -68,13 +82,14 @@
 			<if test="shopCondition.enableStatus!=null">
 				and s.enable_status = #{shopCondition.enableStatus}
 			</if>
-			<if test="shopCondition.owner!=null and shopCondition.owner.userId!=null">
+			<if
+				test="shopCondition.owner!=null and shopCondition.owner.userId!=null">
 				and s.owner_id = #{shopCondition.owner.userId}
 			</if>
-		AND
-		s.area_id=a.area_id
-		AND
-		s.shop_category_id = sc.shop_category_id
+			AND
+			s.area_id=a.area_id
+			AND
+			s.shop_category_id = sc.shop_category_id
 		</where>
 		ORDER BY
 		s.priority
@@ -83,17 +98,29 @@
 	</select>
 	<select id="queryShopCount" resultType="int">
 		SELECT
-		count(*)
+		count(1)
 		FROM
 		tb_shop s,
 		tb_area a,
 		tb_shop_category sc
 		<where>
-			<if test="shopCondition.shopCategory!=null and 
+			<if
+				test="shopCondition.shopCategory!=null and 
 			shopCondition.shopCategory.shopCategoryId!=null">
-				and s.shop_category_id = #{shopCondition.shopCategory.shopCategoryId}
+				and s.shop_category_id =
+				#{shopCondition.shopCategory.shopCategoryId}
 			</if>
-			<if test="shopCondition.area!=null and 
+			<if
+				test="shopCondition.shopCategory!=null 
+			and shopCondition.shopCategory.parent!=null 
+			and shopCondition.shopCategory.parent.shopCategoryId!=null">
+				and s.shop_category_id in (select shop_category_id from
+				tb_shop_category
+				WHERE parent_id =
+				#{shopCondition.shopCategory.parent.shopCategoryId})
+			</if>
+			<if
+				test="shopCondition.area!=null and 
 			shopCondition.area.areaId!=null">
 				and s.area_id = #{shopCondition.area.areaId}
 			</if>
@@ -103,17 +130,19 @@
 			<if test="shopCondition.enableStatus!=null">
 				and s.enable_status = #{shopCondition.enableStatus}
 			</if>
-			<if test="shopCondition.owner!=null and shopCondition.owner.userId!=null">
+			<if
+				test="shopCondition.owner!=null and shopCondition.owner.userId!=null">
 				and s.owner_id = #{shopCondition.owner.userId}
 			</if>
-		AND
-		s.area_id=a.area_id
-		AND
-		s.shop_category_id = sc.shop_category_id
+			AND
+			s.area_id=a.area_id
+			AND
+			s.shop_category_id = sc.shop_category_id
 		</where>
 	</select>
-	
-   <select id="queryByShopId" resultMap="shopMap" parameterType="Long">
+
+	<select id="queryByShopId" resultMap="shopMap"
+		parameterType="Long">
 		SELECT
 		s.shop_id,
 		s.shop_name,
@@ -141,12 +170,14 @@
 		AND
 		s.shop_id = #{shopId}
 	</select>
-   <insert id="insertShop" useGeneratedKeys="true" keyColumn="shop_id"
-		keyProperty="shopId">
+	<insert id="insertShop" useGeneratedKeys="true"
+		keyColumn="shop_id" keyProperty="shopId">
 		INSERT INTO
-		tb_shop(owner_id, area_id, shop_category_id,
+		tb_shop(owner_id, area_id,
+		shop_category_id,
 		shop_name, shop_desc, shop_addr,
-		phone, shop_img, priority,
+		phone, shop_img,
+		priority,
 		create_time, last_edit_time, enable_status,
 		advice)
 		VALUES
@@ -154,7 +185,8 @@
 		#{shopDesc},#{shopAddr},#{phone},#{shopImg},#{priority},
 		#{createTime},#{lastEditTime}, #{enableStatus},#{advice})
 	</insert>
- <update id="updateShop" parameterType="com.imooc.o2o.entity.Shop">
+	<update id="updateShop"
+		parameterType="com.imooc.o2o.entity.Shop">
 		update tb_shop
 		<set>
 			<if test="shopName != null">shop_name=#{shopName},</if>
@@ -171,4 +203,4 @@
 		</set>
 		where shop_id=#{shopId}
 	</update>
-    </mapper>
+</mapper>
