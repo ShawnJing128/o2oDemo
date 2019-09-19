@@ -12,9 +12,9 @@ public class PathUtil {
 		String os = System.getProperty("os.name");// os.name是固定参数，表示获取系统名称
 		String basePath = "";
 		if (os.toLowerCase().startsWith("win")) {
-			basePath = "D:/project/image/";
+			basePath = "D:/project/image";
 		} else {
-			basePath = "/Users/shawn/Document/实战练习/image/";
+			basePath = "/Users/shawn/Document/实战练习/image";
 		}
 		basePath = basePath.replace("/", seperator);// 确保该路径在不同系统下都是有效的
 		return basePath;
@@ -26,7 +26,7 @@ public class PathUtil {
 	 * @return
 	 */
 	public static String getShopImagePath(long shopId) {
-		String imagePath = "upload/item/shop/" + shopId + "/";
+		String imagePath = "/upload/item/shop/" + shopId + "/";
 		return imagePath.replace("/", seperator);
 	}
 }
