@@ -139,6 +139,12 @@
 			<artifactId>commons-fileupload</artifactId>
 			<version>1.3.2</version>
 		</dependency>
+		<!-- redis客户端Jedis -->
+		<dependency>
+			<groupId>redis.clients</groupId>
+			<artifactId>jedis</artifactId>
+			<version>2.9.0</version>
+		</dependency>
 	</dependencies>
 	<build>
 		<finalName>o2oDemo</finalName>

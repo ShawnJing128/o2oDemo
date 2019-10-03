@@ -143,9 +143,9 @@ public class ImageUtil {
 	public static void main(String[] args) throws IOException {
 		//获取classPath的绝对值路径,在上面写成公有变量
 		//String basePath = Thread.currentThread().getContextClassLoader().getResource("").getPath();
-		Thumbnails.of(new File("/Users/shawn/Document/实战练习/image/xiaohuangren.jpg"))
+		Thumbnails.of(new File("/Users/shawn/Document/o2oPractice/image/xiaohuangren.jpg"))
 		.size(200,200).watermark(Positions.BOTTOM_RIGHT,ImageIO.read(new File(basePath + "/watermark.jpg")),0.25f)
-		.outputQuality(0.8f).toFile("/Users/shawn/Document/实战练习/image/xiaohuangrennew.jpg");
+		.outputQuality(0.8f).toFile("/Users/shawn/Document/o2oPractice/image/xiaohuangrennew.jpg");
 	}
 	/**
 	 * storePath是文件路径还是目录路径

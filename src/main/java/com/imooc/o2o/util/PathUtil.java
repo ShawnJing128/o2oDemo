@@ -14,7 +14,7 @@ public class PathUtil {
 		if (os.toLowerCase().startsWith("win")) {
 			basePath = "D:/project/image";
 		} else {
-			basePath = "/Users/shawn/Document/实战练习/image";
+			basePath = "/Users/shawn/Document/o2oPractice/image";
 		}
 		basePath = basePath.replace("/", seperator);// 确保该路径在不同系统下都是有效的
 		return basePath;
@@ -26,7 +26,8 @@ public class PathUtil {
 	 * @return
 	 */
 	public static String getShopImagePath(long shopId) {
-		String imagePath = "/upload/item/shop/" + shopId + "/";
+		// String imagePath = "/upload/item/shop/" + shopId + "/";
+		String imagePath = "/upload/images/item/shop/" + shopId + "/";
 		return imagePath.replace("/", seperator);
 	}
 }
