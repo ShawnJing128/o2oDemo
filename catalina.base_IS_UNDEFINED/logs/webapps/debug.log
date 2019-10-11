@@ -1,1 +1,21 @@
-2019-10-10 17:10:46.604 [main] DEBUG com.imooc.o2o.dao.AreaDao.queryArea - ==>  Preparing: SELECT area_id,area_name,priority,create_time,last_edit_time FROM tb_area ORDER BY priority DESC 
+2019-10-11 22:00:48.565 [main] DEBUG com.imooc.o2o.dao.PersonInfoDao.insertPersonInfo - ==>  Preparing: INSERT INTO tb_person_info(name,gender,email,profile_img,user_type, create_time,last_edit_time,enable_status) VALUES (?,?,?,?, ?,?,?,?) 
+2019-10-11 22:00:48.600 [main] DEBUG com.imooc.o2o.dao.PersonInfoDao.insertPersonInfo - ==> Parameters: 我爱你(String), 女(String), null, null, 1(Integer), 2019-10-11 22:00:47.281(Timestamp), 2019-10-11 22:00:47.281(Timestamp), 1(Integer)
+2019-10-11 22:00:48.714 [main] DEBUG com.imooc.o2o.dao.PersonInfoDao.insertPersonInfo - <==    Updates: 1
+2019-10-11 22:00:48.731 [main] DEBUG c.imooc.o2o.dao.PersonInfoDao.queryPersonInfoById - ==>  Preparing: SELECT user_id, name, gender, email, profile_img, user_type, create_time, last_edit_time, enable_status FROM tb_person_info WHERE user_id = ? 
+2019-10-11 22:00:48.731 [main] DEBUG c.imooc.o2o.dao.PersonInfoDao.queryPersonInfoById - ==> Parameters: 1(Long)
+2019-10-11 22:00:48.811 [main] DEBUG c.imooc.o2o.dao.PersonInfoDao.queryPersonInfoById - <==      Total: 1
+2019-10-11 22:07:08.528 [main] DEBUG com.imooc.o2o.dao.WechatAuthDao.insertWechatAuth - ==>  Preparing: INSERT INTO tb_wechat_auth(user_id,open_id,create_time) VALUES (?,?,?) 
+2019-10-11 22:07:08.571 [main] DEBUG com.imooc.o2o.dao.WechatAuthDao.insertWechatAuth - ==> Parameters: 1(Long), dafahizhfdhaih(String), 2019-10-11 22:07:07.465(Timestamp)
+2019-10-11 22:07:08.688 [main] DEBUG com.imooc.o2o.dao.WechatAuthDao.insertWechatAuth - <==    Updates: 1
+2019-10-11 22:07:08.703 [main] DEBUG c.i.o2o.dao.WechatAuthDao.queryWechatInfoByOpenId - ==>  Preparing: SELECT w.wechat_auth_id, w.open_id, w.create_time, p.user_id, p.name, p.gender, p.email, p.profile_img, p.user_type, p.create_time, p.last_edit_time, p.enable_status FROM tb_wechat_auth w LEFT JOIN tb_person_info p ON w.user_id = p.user_id WHERE w.open_id = ? 
+2019-10-11 22:07:08.704 [main] DEBUG c.i.o2o.dao.WechatAuthDao.queryWechatInfoByOpenId - ==> Parameters: dafahizhfdhaih(String)
+2019-10-11 22:07:08.770 [main] DEBUG c.i.o2o.dao.WechatAuthDao.queryWechatInfoByOpenId - <==      Total: 1
+2019-10-11 23:08:46.460 [main] DEBUG com.imooc.o2o.dao.PersonInfoDao.insertPersonInfo - ==>  Preparing: INSERT INTO tb_person_info(name,gender,email,profile_img,user_type, create_time,last_edit_time,enable_status) VALUES (?,?,?,?, ?,?,?,?) 
+2019-10-11 23:08:46.488 [main] DEBUG com.imooc.o2o.dao.PersonInfoDao.insertPersonInfo - ==> Parameters: 测试一下(String), null, null, null, 1(Integer), 2019-10-11 23:08:46.436(Timestamp), null, 1(Integer)
+2019-10-11 23:08:46.577 [main] DEBUG com.imooc.o2o.dao.PersonInfoDao.insertPersonInfo - <==    Updates: 1
+2019-10-11 23:08:46.587 [main] DEBUG com.imooc.o2o.dao.WechatAuthDao.insertWechatAuth - ==>  Preparing: INSERT INTO tb_wechat_auth(user_id,open_id,create_time) VALUES (?,?,?) 
+2019-10-11 23:08:46.594 [main] DEBUG com.imooc.o2o.dao.WechatAuthDao.insertWechatAuth - ==> Parameters: 10(Long), dafahizhfdhaih(String), 2019-10-11 23:08:46.436(Timestamp)
+2019-10-11 23:08:46.702 [main] DEBUG com.imooc.o2o.dao.WechatAuthDao.insertWechatAuth - <==    Updates: 1
+2019-10-11 23:08:46.837 [main] DEBUG c.i.o2o.dao.WechatAuthDao.queryWechatInfoByOpenId - ==>  Preparing: SELECT w.wechat_auth_id, w.open_id, w.create_time, p.user_id, p.name, p.gender, p.email, p.profile_img, p.user_type, p.create_time, p.last_edit_time, p.enable_status FROM tb_wechat_auth w LEFT JOIN tb_person_info p ON w.user_id = p.user_id WHERE w.open_id = ? 
+2019-10-11 23:08:46.839 [main] DEBUG c.i.o2o.dao.WechatAuthDao.queryWechatInfoByOpenId - ==> Parameters: dafahizhfdhaih(String)
+2019-10-11 23:08:46.900 [main] DEBUG c.i.o2o.dao.WechatAuthDao.queryWechatInfoByOpenId - <==      Total: 1
