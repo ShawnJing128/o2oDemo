@@ -76,16 +76,18 @@ public class ShopManagementController {
 	//根据用户信息返回用户创建的店铺列表
 	private Map<String,Object> getShopList(HttpServletRequest request){
 		Map<String,Object> modelMap = new HashMap<String,Object>();
-		PersonInfo user = new PersonInfo();//模拟用户登录
+		PersonInfo user = (PersonInfo) request.getSession().getAttribute("user");
+//		PersonInfo user = new PersonInfo();//模拟用户登录
 //		user.setUserId(1L);
 //		user.setName("test");
-		request.getSession().setAttribute("user", user);
-		user = (PersonInfo) request.getSession().getAttribute("user");
+//		request.getSession().setAttribute("user", user);
 		try {
 			Shop shopCondition = new Shop();
 			shopCondition.setOwner(user);
 			ShopExecution se = shopService.getShopList(shopCondition, 0, 100);
 			modelMap.put("shopList", se.getShopList());
+			// 列出店铺成功之后，将店铺放入session中作为权限验证依据，即该帐号只能操作它自己的店铺
+			request.getSession().setAttribute("shopList", se.getShopList());
 			modelMap.put("user", user);//用户信息返回前台
 			modelMap.put("success", true);
 		} catch (Exception e) {
