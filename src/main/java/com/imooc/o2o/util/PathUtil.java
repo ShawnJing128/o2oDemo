@@ -14,7 +14,7 @@ public class PathUtil {
 		if (os.toLowerCase().startsWith("win")) {
 			basePath = "D:/project/image";
 		} else {
-			basePath = "/Users/shawn/Document/o2oPractice/image";
+			basePath = "/Users/shawn/Document/o2oPractice/upload";
 		}
 		basePath = basePath.replace("/", seperator);// 确保该路径在不同系统下都是有效的
 		return basePath;
